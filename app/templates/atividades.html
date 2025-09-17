@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Atividades da Turma: {{ turma.nome }}</h2>
+<a href="{{ url_for('main.cadastrar_atividade', turma_id=turma.id) }}">Cadastrar Nova Atividade</a>
+<table border="1" cellpadding="5">
+<tr><th>Número</th><th>Descrição</th></tr>
+{% for atividade in atividades %}
+<tr><td>{{ loop.index }}</td><td>{{ atividade.descricao }}</td></tr>
+{% else %}
+<tr><td colspan="2">Nenhuma atividade cadastrada.</td></tr>
+{% endfor %}
+</table>
+<a href="{{ url_for('main.dashboard') }}">Voltar</a>
+{% endblock %}

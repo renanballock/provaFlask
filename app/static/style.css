@@ -1,0 +1,9 @@
+body{font-family: Arial, sans-serif;max-width:900px;margin:0 auto;padding:10px}
+header{display:flex;justify-content:space-between;align-items:center}
+.btn{display:inline-block;padding:6px 10px;border:1px solid #333;border-radius:4px;text-decoration:none}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{border:1px solid #ddd;padding:8px}
+.flashes{list-style:none;padding:0}
+.flash{padding:8px;margin-bottom:6px}
+.flash.danger{background:#f8d7da}
+.flash.warning{background:#fff3cd}

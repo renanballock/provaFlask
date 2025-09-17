@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Cadastrar Turma</h2>
+    <form method="POST" class="mt-3">
+        <div class="mb-3">
+            <input type="text" name="nome" class="form-control" placeholder="Nome da turma" required>
+        </div>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Voltar</a>
+    </form>
+</div>
+{% endblock %}

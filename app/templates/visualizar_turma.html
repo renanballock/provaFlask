@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Detalhes da Turma: {{ turma.nome }}</h2>
+    <p><strong>Professor:</strong> {{ turma.professor.nome }}</p>
+
+    <h3>Atividades</h3>
+    <ul class="list-group mb-3">
+        {% for atividade in atividades %}
+            <li class="list-group-item">{{ atividade.descricao }}</li>
+        {% else %}
+            <li class="list-group-item">Nenhuma atividade cadastrada.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Voltar</a>
+</div>
+{% endblock %}
