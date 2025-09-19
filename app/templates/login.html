@@ -1,10 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Login</h2>
-<form method="POST">
-    <input type="email" name="email" placeholder="E-mail" required><br>
-    <input type="password" name="senha" placeholder="Senha" required><br>
-    <button type="submit">Entrar</button>
-</form>
-<a href="{{ url_for('auth.register') }}">Registrar</a>
+<div class="container mt-4" style="max-width: 400px;">
+    <h2 class="mb-3">Login</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Digite seu e-mail" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" name="senha" id="senha" class="form-control" placeholder="Digite sua senha" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Entrar como</label>
+            <select name="tipo" id="tipo" class="form-select" required>
+                <option value="professor">Professor</option>
+                <option value="aluno">Aluno</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+    </form>
+
+    <p class="mt-3 text-center">
+        Não tem conta? <a href="{{ url_for('auth.register') }}">Registrar</a>
+    </p>
+</div>
 {% endblock %}

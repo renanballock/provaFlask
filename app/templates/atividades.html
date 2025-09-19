@@ -1,14 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Atividades da Turma: {{ turma.nome }}</h2>
-<a href="{{ url_for('main.cadastrar_atividade', turma_id=turma.id) }}">Cadastrar Nova Atividade</a>
-<table border="1" cellpadding="5">
-<tr><th>Número</th><th>Descrição</th></tr>
-{% for atividade in atividades %}
-<tr><td>{{ loop.index }}</td><td>{{ atividade.descricao }}</td></tr>
-{% else %}
-<tr><td colspan="2">Nenhuma atividade cadastrada.</td></tr>
-{% endfor %}
-</table>
-<a href="{{ url_for('main.dashboard') }}">Voltar</a>
+<div class="container mt-4">
+    <h2>Atividades da Turma: {{ turma.nome }}</h2>
+
+    {% if current_user.is_professor() %}
+        <a href="{{ url_for('main.cadastrar_atividade', turma_id=turma.id) }}" class="btn btn-success mb-3">Cadastrar Nova Atividade</a>
+    {% endif %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for atividade in atividades %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ atividade.descricao }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="2">Nenhuma atividade cadastrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% if current_user.is_professor() %}{{ url_for('main.dashboard') }}{% else %}{{ url_for('main.dashboard_aluno') }}{% endif %}" class="btn btn-secondary mt-3">Voltar</a>
+</div>
 {% endblock %}
